@@ -41,14 +41,16 @@ const (
 //	       notification. Specify "default" to play the device's default
 //	       notification sound, or omit this field to play no sound.
 //	TTLSeconds: The number of seconds for which the message may be kept around
-//	     for redelivery if it hasn't been delivered yet. Defaults to 0.
+//	       for redelivery if it hasn't been delivered yet. Defaults to 0.
 //	Expiration: UNIX timestamp for when this message expires. It has
-//	        the same effect as ttl, and is just an absolute timestamp
-//	        instead of a relative one.
+//	       the same effect as ttl, and is just an absolute timestamp
+//	       instead of a relative one.
 //	Priority: Delivery priority of the message. Use the *Priority constants
-//          specified above.
+//         specified above.
 //	Badge: An integer representing the unread notification count. This
 //	       currently only affects iOS. Specify 0 to clear the badge count.
+//	ChannelID: ID of the Notification Channel through which to display
+//         this notification on Android devices.
 type PushMessage struct {
 	To         ExponentPushToken `json:"to"`
 	Body       string            `json:"body,omitempty"`
@@ -59,6 +61,7 @@ type PushMessage struct {
 	Expiration int64             `json:"expiration,omitempty"`
 	Priority   string            `json:"priority,omitempty"`
 	Badge      int               `json:"badge,omitempty"`
+	ChannelID  string            `json:"channelId,omitempty"`
 }
 
 // Response is the HTTP response returned from an Expo publish HTTP request
